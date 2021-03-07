@@ -1,0 +1,164 @@
+{
+  "id": "04b9b18f-de1b-4e0a-be13-e0c698ef6e5d",
+  "version": 83,
+  "name": "Test Push Service 1101",
+  "description": "",
+  "workflowApiVersion": 1,
+  "entryMode": "MultipleEntries",
+  "activities": [
+    {
+      "type": "REST",
+      "key": "REST-1",
+      "name": "",
+      "outcomes": [
+        {
+          "next": "WAITBYDURATION-4"
+        }
+      ],
+      "schema": {
+        "arguments": {
+          "execute": {
+            "inArguments": [
+              {
+                "foo": {
+                  "dataType": "Text",
+                  "isNullable": false,
+                  "direction": "in"
+                },
+                "bar": {
+                  "dataType": "Text",
+                  "isNullable": false,
+                  "direction": "in"
+                }
+              }
+            ],
+            "outArguments": [
+            ]
+          }
+        }
+      },
+      "metaData": {
+        "icon": "https://example.com/activity/images/icon.png",
+        "iconSmall": "https://example.com/activity/images/iconSmall.png",
+        "category": "message",
+        "original_iconSmall": "images/iconSmall.png",
+        "original_icon": "images/icon.png",
+        "isConfigured": true
+      },
+      "arguments": {
+        "execute": {
+          "inArguments": [
+            {
+              "foo": "foo value"
+            },
+            {
+              "bar": "bar value"
+            }
+          ],
+          "outArguments": [
+          ],
+          "url": "https://tcontact.o-bank.com/sfmc/Message/execute",
+          "useJwt": true
+        }
+      },
+      "configurationArguments": {
+        "applicationExtensionKey": "sampleExtensionKey",
+        "publish": {
+          "url": "https://example.com/activity/publish"
+        }
+      }
+    },
+    {
+      "type": "WAIT",
+      "key": "WAITBYDURATION-4",
+      "name": "",
+      "outcomes": [
+        {
+          "next": "WAITBYDURATION-5"
+        }
+      ],
+      "metaData": {
+        "isConfigured": true,
+        "uiType": "WAITBYDURATION"
+      },
+      "configurationArguments": {
+        "waitDuration": 1,
+        "waitUnit": "DAYS"
+      }
+    },
+    {
+      "type": "WAIT",
+      "key": "WAITBYDURATION-5",
+      "name": "",
+      "outcomes": [
+        {
+          "next": null
+        }
+      ],
+      "metaData": {
+        "isConfigured": true,
+        "uiType": "WAITBYDURATION"
+      },
+      "configurationArguments": {
+        "waitDuration": 1,
+        "waitUnit": "DAYS"
+      }
+    }
+  ],
+  "persistenceModel_pausing": {},
+  "persistenceModel_resuming": {},
+  "metaData": {},
+  "key": "40ed43a8-d431-0e49-9ea0-795f9fbbad81",
+  "createdDate": "2018-08-14T08:03:33.000Z",
+  "modifiedDate": "2018-08-14T08:03:33.000Z",
+  "goals": [],
+  "exits": [],
+  "executionMode": "Production",
+  "categoryId": 2331,
+  "definitionId": "710d5609-52ed-4aaf-9c9e-899c6ebd37c0",
+  "defaults": {
+    "email": [
+      "{{Contact.SendableAttribute.Email.\"Email Addresses.Email Address\"}}"
+    ],
+    "mobileNumber": [
+      "legacyfallback"
+    ],
+    "transactionKeys": null,
+    "properties": {
+      "analyticsTracking": {
+        "enabled": false,
+        "analyticsType": "google",
+        "urlDomainsToTrack": []
+      }
+    }
+  },
+  "triggers": [
+    {
+      "key": "TRIGGER",
+      "name": "TRIGGER",
+      "description": "",
+      "type": "MobileConnectAudience",
+      "arguments": {
+        "startActivityKey": "{{Context.StartActivityKey}}",
+        "dequeueReason": "{{Context.DequeueReason}}",
+        "lastExecutedActivityKey": "{{Context.LastExecutedActivityKey}}",
+        "filterResult": "true"
+      },
+      "configurationArguments": {
+        "filterDefinitionId": "00000000-0000-0000-0000-000000000000",
+        "criteria": "",
+        "schemaVersionId": 0
+      },
+      "metaData": {
+        "sourceInteractionId": "00000000-0000-0000-0000-000000000000",
+        "eventDefinitionId": "B7BC59AD-7D14-4587-B089-0069B0805753",
+        "eventDefinitionKey": "MobileConnect-abed0fb3-51da-1735-79bc-6568e2cb396a",
+        "chainType": "none",
+        "configurationRequired": false,
+        "iconUrl": "/events/images/icon_journeyBuilder-audience-MobileConnectLists-blue.svg",
+        "title": ""
+      }
+    }
+  ],
+  "status": "DRAFT"
+}

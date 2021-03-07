@@ -1,0 +1,66 @@
+{
+  "workflowApiVersion": "1.1",
+  "metaData": {
+    "icon": "images/icon.png",
+    "iconSmall": "images/iconSmall.png",
+    "category": "message"
+  },
+  "type": "REST",
+  "lang": {
+    "en-US": {
+      "name": "Sample",
+      "description": "Sample Activity"
+    }
+  },
+  "arguments": {
+    "execute": {
+      "inArguments": [
+        { "foo": "foo value" },
+        { "bar": "bar value" }
+      ],
+      "outArguments": [
+      ],
+      "url": "https://example.com/activity/execute",
+      "useJwt": true
+    }
+  },
+  "configurationArguments": {
+    "applicationExtensionKey": "sampleExtensionKey",
+    "publish": {
+      "url": "https://example.com/activity/publish"
+    }
+  },
+  "wizardSteps": [
+    {"label": "Step One", "key": "one" },
+    {"label": "Step Two", "key": "two" },
+    {"label": "Step Three", "key": "three" }
+  ],
+  "userInterfaces": {
+    "configModal": {
+      "height": 300,
+      "width": 450
+    }
+  },
+  "schema": {
+    "arguments": {
+      "execute": {
+        "inArguments": [
+          {
+            "foo": {
+              "dataType": "Text",
+              "isNullable": false,
+              "direction": "in"
+            },
+            "bar": {
+              "dataType": "Text",
+              "isNullable": false,
+              "direction": "in"
+            }
+          }
+        ],
+        "outArguments": [
+	]
+      }
+    }
+  }
+}
