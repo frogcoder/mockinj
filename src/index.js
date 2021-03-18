@@ -7,7 +7,7 @@ window.addEventListener('load', async () => {
 
   const loadJson = url => fetch(url).then(response => response.json());
   journey = await loadJson("journey.json");
-  config = await loadJson("config.json");
+  config = await loadJson("activity/config.json");
   const activityFrame = document.getElementById('activity');
   const activity = document.createElement("iframe");
   activity.setAttribute("src", "activity/activity.html");
