@@ -21,11 +21,12 @@ window.addEventListener('load', async () => {
   const backButton = document.createElement("button");
   backButton.innerText = "Back";
   backButton.addEventListener("click", () => connection.trigger("clickedBack"));
+  backButton.setAttribute("disabled", "disabled");
 
   const nextButton = document.createElement("button");
   nextButton.innerText = "Next";
   nextButton.addEventListener("click", () => connection.trigger("clickedNext"));
-
+  
   document.body.appendChild(backButton);
   document.body.appendChild(nextButton);
 
@@ -38,10 +39,12 @@ window.addEventListener('load', async () => {
       } else {
 	button.setAttribute(disabledAttr, disabledAttr);
       }
-    }
+    };
     switch (target.button) {
     case "back":
-      toggle(backButton);
+      if (currentStepIndex > 0) {
+	toggle(backButton);
+      }
       break;
     case "next":
       console.log("toggleing next button");
@@ -56,6 +59,11 @@ window.addEventListener('load', async () => {
     currentStepIndex = 0;
     activity.contentWindow.location.reload();
   });
+  if (config.wizardSteps.length > 1) {
+    doneButton.style.display = "none";
+  } else {
+    nextButton.style.display = "none";
+  }
   document.body.appendChild(doneButton);
   const gotoStep = () => connection.trigger("gotoStep", config.wizardSteps[currentStepIndex]);
   connection.on("nextStep", () => {
@@ -68,10 +76,17 @@ window.addEventListener('load', async () => {
       nextButton.style.display = "inline";
       doneButton.style.display = "none";
     }
+    backButton.removeAttribute("disabled");
   });
   connection.on("prevStep", () => {
     currentStepIndex--;
     gotoStep();
+    if (currentStepIndex <= 0) {
+      backButton.setAttribute("disabled", "disabled");
+    } else {
+      backButton.removeAttribute("disabled");
+    }
+    doneButton.style.display = "none";
   });
 
   connection.on("requestInteraction", () => connection.trigger("requestedInteraction", journey));
