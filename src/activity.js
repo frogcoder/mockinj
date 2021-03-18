@@ -20,11 +20,12 @@ function activate(elementRoot) {
   const stepTwoTitle = document.createElement("h1");
   const fooInput = document.createElement("input");
   fooInput.type = "text";
-  fooInput.required = true;
+  fooInput.setAttribute("required", "required");
   fooInput.placeholder = "foo is required";
-  fooInput.addEventListener("change", e => {
-    if (e.checkValidity()) {
-      foo = fooInput.value;
+  fooInput.addEventListener("input", e => {
+    if (e.target.checkValidity()) {
+      foo = e.target.value;
+      connection.trigger("updateButton", { button: "next", enabled: true });
     } else {
       connection.trigger("updateButton", { button: "next", enabled: false });
     }
