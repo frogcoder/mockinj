@@ -15,7 +15,7 @@
   "arguments": {
     "execute": {
       "inArguments": [
-        { "foo": "foo value" },
+        { "foo": "" },
         { "bar": "bar value" }
       ],
       "outArguments": [
