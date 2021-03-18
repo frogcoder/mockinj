@@ -10,7 +10,7 @@ window.addEventListener('load', async () => {
   config = await loadJson("config.json");
   const activityFrame = document.getElementById('activity');
   const activity = document.createElement("iframe");
-  activity.setAttribute("src", "activity.html");
+  activity.setAttribute("src", "activity/activity.html");
   activity.setAttribute("width", config.userInterfaces.configModal.width);
   activity.setAttribute("height", config.userInterfaces.configModal.height);
   document.body.appendChild(activity);
