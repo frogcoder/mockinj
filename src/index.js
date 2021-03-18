@@ -50,20 +50,20 @@ window.addEventListener('load', async () => {
     }
   });
 
-  const saveButton = document.createElement("button");
-  saveButton.innerText = "Save";
-  saveButton.addEventListener("click", () => {
+  const doneButton = document.createElement("button");
+  doneButton.innerText = "Done";
+  doneButton.addEventListener("click", () => {
     currentStepIndex = 0;
     activity.contentWindow.location.reload();
   });
-  document.body.appendChild(saveButton);
+  document.body.appendChild(doneButton);
   const gotoStep = () => connection.trigger("gotoStep", config.wizardSteps[currentStepIndex]);
   connection.on("nextStep", () => {
     currentStepIndex++;
     gotoStep();
     if (currentStepIndex >= config.wizardSteps.length - 1) {
       nextButton.style.display = "none";
-      saveButton.style.display = "inline";
+      doneButton.style.display = "inline";
     }
   });
   connection.on("prevStep", () => {
