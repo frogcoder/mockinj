@@ -61,6 +61,10 @@ window.addEventListener('load', async () => {
   connection.on("nextStep", () => {
     currentStepIndex++;
     gotoStep();
+    if (currentStepIndex >= config.wizardSteps.length - 1) {
+      nextButton.style.display = "none";
+      saveButton.style.display = "inline";
+    }
   });
   connection.on("prevStep", () => {
     currentStepIndex--;
