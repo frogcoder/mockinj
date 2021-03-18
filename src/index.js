@@ -64,6 +64,9 @@ window.addEventListener('load', async () => {
     if (currentStepIndex >= config.wizardSteps.length - 1) {
       nextButton.style.display = "none";
       doneButton.style.display = "inline";
+    } else {
+      nextButton.style.display = "inline";
+      doneButton.style.display = "none";
     }
   });
   connection.on("prevStep", () => {
